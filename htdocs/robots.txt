@@ -1,0 +1,11 @@
+# 
+
+User-agent: *
+Crawl-delay: 90
+Disallow: /img/
+Disallow: /css/
+Disallow: /js/
+Disallow: /error/
+Disallow: /logs/
+Disallow: /tmp/
+

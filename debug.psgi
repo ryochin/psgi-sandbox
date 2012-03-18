@@ -40,7 +40,7 @@ builder {
 	# static server for devel
 	enable 'Static', path => qw{^/(img|css|js|error)/}, root => $htdocs_dir;
 	enable 'Static', path => qw{^/(?:favicon\.(ico|png)|robots\.txt)$}, root => $htdocs_dir;
-	$app,
+	$app;
 };
 
 __END__

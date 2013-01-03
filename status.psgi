@@ -10,14 +10,14 @@ my $app = sub {
 	return [ 200, [ 'Content-Type' => 'text/plain' ], [ "Hello World" ] ];
 };
 
-my ($fh, $filename) = File::Temp::tempfile( EXLOCK => 0 );
+my $fh = File::Temp->new( DIR => "/tmp", SUFFIX => '.dat' );
 
 builder {
 	enable "ServerStatus::Lite",
 		path => '/server-status',
 		allow => [ '127.0.0.1', '192.168.0.0/16' ],
 #		counter_file => './var/counter_file.txt',
-		counter_file => $filename,
+		counter_file => $fh->filename,
 		scoreboard => File::Temp::tempdir( CLEANUP => 1 );
 	$app;
 };

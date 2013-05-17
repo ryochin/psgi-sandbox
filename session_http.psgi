@@ -8,7 +8,7 @@ use Plack::Response;
 use Plack::Builder;
 
 use HTTP::Session;
-use  HTTP::Session::State::Cookie;
+use HTTP::Session::State::Cookie;
 use HTTP::Session::Store::File;
 
 use Path::Class qw(dir file);
@@ -24,7 +24,7 @@ my $app = sub {
 	$session->set( foo => time ) if not ( 5 % ( int(rand 10) + 1 ) );
 	$session->set( bar => q{なんとか〜} );
 	
-	my $content = "ok: " . $session->get('foo') || "(none)";
+	my $content = "ok: " . ( $session->get('foo') // "(none)" );
 	
 	my $res = Plack::Response->new(200);
 	$res->content_type("text/plain");

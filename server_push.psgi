@@ -8,7 +8,7 @@ use Plack::Response;
 
 use Path::Class qw(file);
 
-my $file = file("./test.jpg");
+my $file = file("./htdocs/test.jpg");
 die sprintf "please prepare your file '%s' !", $file->basename if not -r $file;
 
 my $boundary = sprintf "----=_NeXtPaRt%08.0f", rand() * 1E8;    # by CGI::Push

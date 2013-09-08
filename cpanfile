@@ -3,6 +3,7 @@ requires 'Plack::App::Proxy';
 requires 'Plack::Middleware::Auth::Basic';
 requires 'Plack::Middleware::Auth::Digest';
 requires 'Plack::Middleware::AxsLog';
+requires 'Plack::Middleware::CSRFBlock';
 requires 'Plack::Middleware::Debug';
 requires 'Plack::Middleware::Deflater';
 requires 'Plack::Middleware::Profiler::KYTProf';

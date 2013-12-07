@@ -17,8 +17,9 @@ my $app = sub {
 		status => $status + 0,    # numify
 		user_name => "まいね〜む",
 		list => [ 0 .. 5 ],
-		epoch => time,
+		epoch => time(),
 		empty => undef,
+		is_new => JSON::true,
 	};
 
 	# res

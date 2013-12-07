@@ -8,6 +8,7 @@ requires 'Plack::Middleware::Debug';
 requires 'Plack::Middleware::Deflater';
 requires 'Plack::Middleware::Profiler::KYTProf';
 requires 'Plack::Middleware::Profiler::NYTProf';
+requires 'Plack::Middleware::Proxy::Requests';
 requires 'Plack::Middleware::ReverseProxy';
 requires 'Plack::Middleware::ServerStatus::Lite';
 
@@ -28,7 +29,6 @@ requires 'File::RotateLogs';
 requires 'Furl::HTTP';
 requires 'HTTP::Exception';
 requires 'HTTP::Session';
-requires 'IO::File';
 requires 'JSON';
 requires 'JSON::XS';
 requires 'Log::Dispatch::Config';

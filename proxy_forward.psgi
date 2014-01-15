@@ -8,6 +8,8 @@ use Plack::Builder;
 use Plack::App::Proxy;
 
 builder {
+	enable 'AccessLog', format => 'combined';
+
 	enable 'Proxy::Connect';
 	enable 'Proxy::AddVia';
 	enable 'Proxy::Requests';

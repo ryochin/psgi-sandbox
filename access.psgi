@@ -20,7 +20,7 @@ my $app = sub {
 
 builder {
 	enable 'Access',
-#		deny_page => sub { Plack::Response->new(403)->finalize },
+#		deny_page => sub { HTTP::Exception::406->throw },
 		rules => [
 			allow => "example.com",
 			allow => "127.0.0.0/8",

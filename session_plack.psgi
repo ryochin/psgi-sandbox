@@ -12,12 +12,12 @@ use Plack::Session::State::Cookie;
 use Plack::Session::Store::File;
 use Plack::Session::Store::Cache;
 
-use YAML::Syck ();
-$YAML::Syck::Headless = 1;
-$YAML::Syck::SortKeys = 1;
-$YAML::Syck::ImplicitUnicode = 1;
+use YAML ();
+$YAML::Headless = 1;
+$YAML::SortKeys = 1;
+$YAML::ImplicitUnicode = 1;
 
-use CHI;    # unified cache interface, uses Moose
+use CHI;    # unified cache interface, uses Moo
 use CHI::Driver::Memcached;
 
 use utf8;
@@ -53,8 +53,8 @@ builder {
 		state => Plack::Session::State::Cookie->new( expires => 60 ),    # sec
 #		store => Plack::Session::Store::File->new(
 #			dir => './session',
-#			serializer => sub { YAML::Syck::DumpFile( reverse @_ ) },
-#			deserializer => sub { YAML::Syck::LoadFile( @_ ) }
+#			serializer => sub { YAML::DumpFile( reverse @_ ) },
+#			deserializer => sub { YAML::LoadFile( @_ ) }
 #		);
 		store => Plack::Session::Store::Cache->new( cache => $cache );
 	$app;

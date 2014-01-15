@@ -13,6 +13,7 @@ requires 'Plack::Middleware::ReverseProxy';
 requires 'Plack::Middleware::ServerStatus::Lite';
 
 requires 'Starlet';
+requires 'Twiggy';
 
 requires 'CGI::Compile';
 requires 'CGI::Emulate::PSGI';
@@ -40,4 +41,4 @@ requires 'String::TT';
 requires 'Sys::Load';
 requires 'Time::HiRes';
 requires 'Try::Tiny';
-requires 'YAML::Syck';
+requires 'YAML';

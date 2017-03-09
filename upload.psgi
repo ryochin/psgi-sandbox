@@ -22,9 +22,12 @@ my $app = sub {
 		# upload
 		# -> $upload is a Plack::Request::Upload object
 		$body .= <<"END";
-<p>
-	length: @{[ Number::Bytes::Human::format_bytes( $upload->size ) ]} bytes
-</p>
+<ul>
+	<li>size: @{[ Number::Bytes::Human::format_bytes( $upload->size ) ]} bytes</li>
+	<li>content type: @{[ $upload->content_type ]}</li>
+	<li>path: @{[ $upload->path ]}</li>
+	<li>basename: @{[ $upload->basename ]}</li>
+</ul>
 END
 	}
 	

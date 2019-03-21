@@ -1,5 +1,6 @@
 requires 'Plack';
 requires 'Plack::App::Proxy';
+requires 'Plack::App::WebSocket';
 requires 'Plack::Middleware::Auth::Basic';
 requires 'Plack::Middleware::Auth::Digest';
 requires 'Plack::Middleware::AxsLog';
@@ -23,6 +24,8 @@ requires 'Tatsumaki';
 
 requires 'Authen::Htpasswd';
 requires 'AnyEvent';
+requires 'AnyEvent::Open3::Simple';
+requires 'AnyEvent::WebSocket::Client';
 requires 'Carp::Assert';
 requires 'Carp::Assert::More';
 requires 'CHI';

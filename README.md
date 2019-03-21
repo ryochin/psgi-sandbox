@@ -9,18 +9,24 @@ How To Setup Environment
 
 install Carton library first.
 
-	cpanm Carton
+```sh
+cpanm Carton
+```
 
 then you can install all dependencies to ./local/ with:
 
-	carton
+```sh
+carton
+```
 
 Hot to run each psgi scripts
 ----------------------------
 
 use `carton` command as below.
 
-	carton exec plackup ./simple.psgi
+```sh
+carton exec plackup ./simple.psgi
+```
 
 then access with browser to:
 

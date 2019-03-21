@@ -35,4 +35,5 @@ report/*
 /carton.lock
 /.carton/
 /local/
-
+cpanfile.snapshot
+.perl-version

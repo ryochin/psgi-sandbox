@@ -17,6 +17,6 @@ my $app = sub {
 
   my $res = Plack::Response->new(200);
   $res->content_type("text/plain");
-  $res->body(np($tls_info));
+  $res->body( np($tls_info) );
   return $res->finalize;
 };

@@ -4,6 +4,6 @@ use HTTP::Exception;
 use Plack::Builder;
 
 builder {
-	enable 'HTTPExceptions';
-	sub { HTTP::Exception::403->throw };
+  enable 'HTTPExceptions';
+  sub { HTTP::Exception::403->throw };
 };

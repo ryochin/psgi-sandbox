@@ -17,11 +17,11 @@ my $ua = LWP::UserAgent->new;
 $ua->env_proxy;
 $ua->credentials( "$host:$port", "Admin Area", "taro", "passwd01" );
 
-if( my $res = $ua->request( $req ) ){
-	warn $res->status_line;
+if ( my $res = $ua->request($req) ) {
+  warn $res->status_line;
 }
-else{
-	warn "failed";
+else {
+  warn "failed";
 }
 
 __END__

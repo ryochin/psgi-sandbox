@@ -8,7 +8,7 @@ use DDP;
 use Data::Section -setup;
 use Text::Template;
 
-  my $template = Text::Template->new( TYPE => 'STRING', SOURCE => ${ __PACKAGE__->section_data('main') } );
+my $template = Text::Template->new( TYPE => 'STRING', SOURCE => ${ __PACKAGE__->section_data('main') } );
 
 sub {
   my $req = Plack::Request->new(shift);
@@ -16,12 +16,12 @@ sub {
   our $data   = $req->param('data');
   our $result = '?';
 
-  if( defined $data ){
-    $data = $result = int($data || 7) * 6;
+  if ( defined $data ) {
+    $data = $result = int( $data || 7 ) * 6;
 
     p($req);
   }
-  else{
+  else {
     $data = 7;
   }
 

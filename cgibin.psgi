@@ -4,4 +4,4 @@ use strict;
 use warnings;
 use Plack::App::CGIBin;
 
-Plack::App::CGIBin->new(root => ".")->to_app;
+Plack::App::CGIBin->new( root => "." )->to_app;

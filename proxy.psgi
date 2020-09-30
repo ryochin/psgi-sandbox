@@ -6,12 +6,12 @@ use Plack::App::Proxy;
 use Plack::Builder;
 
 builder {
-	enable 'Proxy::RewriteLocation';
-	mount "/joinreq" => Plack::App::Proxy->new(
-		remote => 'http://fumi2.jp/',
-		preserve_host_header => 1,
-		backend => 'AnyEvent::HTTP',    # AnyEvent::HTTP is the default if no backend is specified
-	)->to_app;
+  enable 'Proxy::RewriteLocation';
+  mount "/joinreq" => Plack::App::Proxy->new(
+    remote               => 'http://fumi2.jp/',
+    preserve_host_header => 1,
+    backend              => 'AnyEvent::HTTP',     # AnyEvent::HTTP is the default if no backend is specified
+  )->to_app;
 };
 
 __END__

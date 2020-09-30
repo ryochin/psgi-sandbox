@@ -10,39 +10,39 @@ use AnyEvent::Open3::Simple;
 use AnyEvent::WebSocket::Client;
 use JSON qw( to_json );
 
-my $client = AnyEvent::WebSocket::Client->new;
+my $client     = AnyEvent::WebSocket::Client->new;
 my $connection = $client->connect("ws://localhost:5000/websocket")->recv;
 
 my $done = AnyEvent->condvar;
 
 my $ipc = AnyEvent::Open3::Simple->new(
   on_stdout => sub {
-    my($proc, $line) = @_;
+    my ( $proc, $line ) = @_;
     say $line;
-    $connection->send(to_json({ type => 'out', data => $line }));
+    $connection->send( to_json( { type => 'out', data => $line } ) );
   },
   on_stderr => sub {
-    my($proc, $line) = @_;
+    my ( $proc, $line ) = @_;
     say STDERR $line;
-    $connection->send(to_json({ type => 'err', data => $line }));
+    $connection->send( to_json( { type => 'err', data => $line } ) );
   },
   on_exit => sub {
-    my($proc, $exit, $signal) = @_;
-    $connection->send(to_json({ type => 'exit', exit => $exit, signal => $signal }));
-    $done->send([$exit,$signal]);
+    my ( $proc, $exit, $signal ) = @_;
+    $connection->send( to_json( { type => 'exit', exit => $exit, signal => $signal } ) );
+    $done->send( [ $exit, $signal ] );
   },
   on_error => sub {
-    my($error) = @_;
-    $connection->send(to_json({ type => 'error', data => $error }));
+    my ($error) = @_;
+    $connection->send( to_json( { type => 'error', data => $error } ) );
     $done->croak($error);
   },
 );
 
-$connection->send(to_json([ qw(message hello) ]));
-$ipc->run( qw(message hello) );
+$connection->send( to_json( [qw(message hello)] ) );
+$ipc->run(qw(message hello));
 
-my($exit,$signal) = @{ $done->recv };
-if($signal)
+my ( $exit, $signal ) = @{ $done->recv };
+if ($signal)
 {
   say STDERR "died with signal $signal\n";
   exit 1;

@@ -11,30 +11,30 @@ use JSON;
 use utf8;
 
 my $app = sub {
-	# data
-	my $status = "42";
-	my $data = {
-		status => $status + 0,    # numify
-		user_name => "まいね〜む",
-		list => [ 0 .. 5 ],
-		epoch => time(),
-		empty => undef,
-		is_new => JSON::true,
-	};
+  # data
+  my $status = "42";
+  my $data   = {
+    status    => $status + 0,    # numify
+    user_name => "まいね〜む",
+    list      => [ 0 .. 5 ],
+    epoch     => time(),
+    empty     => undef,
+    is_new    => JSON::true,
+  };
 
-	# res
-	my $res = Plack::Response->new(200);
-	$res->content_type("application/json");
-	$res->header( 'Content-Language' => 'ja' );
-	$res->header( "X-Content-Type-Options" => "nosniff" );    # for security
-	
-	# for dynamic content
-	$res->header( 'Pragma' => 'no-cache' );
-	$res->header( 'Cache-control' => [ 'no-cache', 'private' ] );
+  # res
+  my $res = Plack::Response->new(200);
+  $res->content_type("application/json");
+  $res->header( 'Content-Language'       => 'ja' );
+  $res->header( "X-Content-Type-Options" => "nosniff" );    # for security
 
-	$res->body( JSON->new->ascii( 1 )->encode( $data ) );
+  # for dynamic content
+  $res->header( 'Pragma'        => 'no-cache' );
+  $res->header( 'Cache-control' => [ 'no-cache', 'private' ] );
 
-	return $res->finalize;
+  $res->body( JSON->new->ascii(1)->encode($data) );
+
+  return $res->finalize;
 };
 
 __END__

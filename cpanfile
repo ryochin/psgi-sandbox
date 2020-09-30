@@ -58,3 +58,8 @@ requires 'Text::Template';
 requires 'Time::HiRes';
 requires 'Try::Tiny';
 requires 'YAML';
+
+on 'development' => sub {
+  requires 'Perl::Tidy';
+  requires 'Perl::Critic';
+};

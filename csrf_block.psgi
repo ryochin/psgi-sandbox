@@ -6,27 +6,27 @@ use Plack::Request;
 use Plack::Response;
 
 my $app = sub {
-	my $req = Plack::Request->new(shift);
+  my $req = Plack::Request->new(shift);
 
-	my $body = $req->path eq '/api'
-		? "<html>ok (<a href='/'>back</a>)"
-		: &template;
+  my $body = $req->path eq '/api'
+    ? "<html>ok (<a href='/'>back</a>)"
+    : &template;
 
-	my $res = Plack::Response->new(200);
-	$res->content_type("text/html");
-	$res->body( scalar $body );
-	return $res->finalize;
+  my $res = Plack::Response->new(200);
+  $res->content_type("text/html");
+  $res->body( scalar $body );
+  return $res->finalize;
 };
 
 builder {
-	enable 'Session';
-	enable 'CSRFBlock',
-		meta_tag => 'secure_token';
-	$app;
+  enable 'Session';
+  enable 'CSRFBlock',
+    meta_tag => 'secure_token';
+  $app;
 };
 
 sub template {
-	return <<'';
+  return <<'';
 <!DOCTYPE html>
 <html lang="en">
 	<head>
